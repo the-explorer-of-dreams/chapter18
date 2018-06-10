@@ -1,11 +1,15 @@
 package com.smart.domain;
 
+
 import org.hibernate.annotations.CacheConcurrencyStrategy;
 
 import javax.persistence.*;
 import java.util.Date;
+import org.hibernate.annotations.Cache;
 
 @Entity
+//@Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
+////@Cache()
 @Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
 @Table(name="t_post")
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)

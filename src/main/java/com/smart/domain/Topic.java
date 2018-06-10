@@ -4,6 +4,7 @@ import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
 
 import javax.persistence.*;
+import java.util.Date;
 
 @Entity
 @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
@@ -15,7 +16,7 @@ public static final int NOT_DIGEST_TOPIC=0;
     @id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name="topic_id")
-    private int topicId;
+    private Integer topicId;
 
     @Column(name="topic_title")
     private String topicTitle;
@@ -25,7 +26,7 @@ public static final int NOT_DIGEST_TOPIC=0;
     private User user;
 
     @Column(name="board_id")
-    private int boardId;
+    private Integer boardId;
 
     @Transient
     private MainPost mainPost = new MainPost();
@@ -37,26 +38,18 @@ public static final int NOT_DIGEST_TOPIC=0;
     private Date createTime = new Date();
 
     @Column(name="topic_views")
-    private int views;
+    private Integer views;
 
     @Column(name="topic_replies")
-    private int replies;
+    private Integer replies;
 
-    private int digest = NOT_DIGEST_TOPIC;
+    private Integer digest = NOT_DIGEST_TOPIC;
 
-    public static int getDigestTopic() {
-        return DIGEST_TOPIC;
-    }
-
-    public static int getNotDigestTopic() {
-        return NOT_DIGEST_TOPIC;
-    }
-
-    public int getTopicId() {
+    public Integer getTopicId() {
         return topicId;
     }
 
-    public void setTopicId(int topicId) {
+    public void setTopicId(Integer topicId) {
         this.topicId = topicId;
     }
 
@@ -76,11 +69,11 @@ public static final int NOT_DIGEST_TOPIC=0;
         this.user = user;
     }
 
-    public int getBoardId() {
+    public Integer getBoardId() {
         return boardId;
     }
 
-    public void setBoardId(int boardId) {
+    public void setBoardId(Integer boardId) {
         this.boardId = boardId;
     }
 
@@ -108,27 +101,27 @@ public static final int NOT_DIGEST_TOPIC=0;
         this.createTime = createTime;
     }
 
-    public int getViews() {
+    public Integer getViews() {
         return views;
     }
 
-    public void setViews(int views) {
+    public void setViews(Integer views) {
         this.views = views;
     }
 
-    public int getReplies() {
+    public Integer getReplies() {
         return replies;
     }
 
-    public void setReplies(int replies) {
+    public void setReplies(Integer replies) {
         this.replies = replies;
     }
 
-    public int getDigest() {
+    public Integer getDigest() {
         return digest;
     }
 
-    public void setDigest(int digest) {
+    public void setDigest(Integer digest) {
         this.digest = digest;
     }
 }
