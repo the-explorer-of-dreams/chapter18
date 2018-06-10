@@ -6,7 +6,7 @@ import org.springframework.orm.hibernate3.HibernateTemplate;
 import java.io.Serializable;
 import java.lang.reflect.ParameterizedType;
 import java.lang.reflect.Type;
-
+import java.util.List;
 
 
 public class BaseDao<T> {
@@ -22,9 +22,33 @@ public class BaseDao<T> {
         entityClass = (Class) params[0];
     }
 
-    public T load(){
-        return (T)getHibernateTemplate().l
+
+    //查询PO
+    /**
+     * 根据ID加载PO实例
+     */
+    public T load(Serializable id){
+        return (T)getHibernateTemplate().load(entityClass,id);
     }
+
+
+    /**
+     * 根据ID获取PO实例
+     */
+    public T get(Serializable id){
+        return (T) getHibernateTemplate().get(entityClass, id);
+    }
+
+    /**
+     * 加载PO所有实例
+     */
+    public List<T> loadAll(){
+        return getHibernateTemplate().loadAll(entityClass);
+    }
+
+
+
+
 
 
     public HibernateTemplate getHibernateTemplate() {
