@@ -20,11 +20,11 @@
     <commons-dbcp.version>1.4</commons-dbcp.version>
     <jetty.version>8.1.8.v20121106</jetty.version>
     <aspectjweaver.version>1.6.8</aspectjweaver.version>
-    <hibernate.version>4.2.0.Final</hibernate.version>
-    <mockito.version>1.10.19</mockito.version>
+    <hibernate.version>5.3.1.Final</hibernate.version>
+    <emockito.version>1.10.19</emockito.version>
     <unitils.version>3.4.2</unitils.version>
     <selenium.version>2.41.0</selenium.version>
-    <dbunit.version>2.5.1</dbunit.version>
+    <dbunit.version>2.5.4</dbunit.version>
     <hamcrest.version>1.3</hamcrest.version>
   </properties>
 
@@ -95,12 +95,12 @@
     <dependency>
       <groupId>org.hibernate</groupId>
       <artifactId>hibernate-core</artifactId>
-      <version>4.2.0.Final</version>
+      <version>${hibernate.version}</version>
     </dependency>
     <dependency>
       <groupId>org.hibernate</groupId>
       <artifactId>hibernate-ehcache</artifactId>
-      <version>4.2.0.Final</version>
+      <version>${hibernate.version}</version>
     </dependency>
     <dependency>
       <groupId>org.hibernate.javax.persistence</groupId>
