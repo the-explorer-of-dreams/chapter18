@@ -8,15 +8,13 @@ import java.util.Date;
 import org.hibernate.annotations.Cache;
 
 @Entity
-//@Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
-////@Cache()
 @Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
 @Table(name="t_post")
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
 @DiscriminatorColumn(name="post_type",discriminatorType = DiscriminatorType.STRING)
 @DiscriminatorValue("1")
 public class Post extends BaseDomain {
-    @id
+    @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name="post_id")
     private Integer postId;

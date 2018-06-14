@@ -2,7 +2,8 @@ package com.smart.dao;
 
 import org.hibernate.Query;
 import org.hibernate.Session;
-import org.springframework.orm.hibernate3.HibernateTemplate;
+
+import org.springframework.orm.hibernate4.HibernateTemplate;
 import org.springframework.util.Assert;
 
 import java.io.Serializable;
@@ -128,7 +129,7 @@ public class BaseDao<T> {
      * @see #pagedQuery(String,int,int,Object[])
      */
     private static String removeSelect(String hql) {
-        Assert.hasText(hql);
+        Assert.hasText(hql,"");
         int beginPos = hql.toLowerCase().indexOf("from");
         Assert.isTrue(beginPos != -1, " hql : " + hql + " must has a keyword 'from'");
         return hql.substring(beginPos);
@@ -140,7 +141,7 @@ public class BaseDao<T> {
      * @see #pagedQuery(String,int,int,Object[])
      */
     private static String removeOrders(String hql) {
-        Assert.hasText(hql);
+        Assert.hasText(hql,"");
         Pattern p = Pattern.compile("order\\s*by[\\w|\\W|\\s|\\S]*", Pattern.CASE_INSENSITIVE);
         Matcher m = p.matcher(hql);
         StringBuffer sb = new StringBuffer();

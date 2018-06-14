@@ -3,17 +3,18 @@ package com.smart.domain;
 import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
 
+
 import javax.persistence.*;
 import java.util.Date;
 
 @Entity
 @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
-@Table("t_topic")
+@Table(name="t_topic")
 public class Topic extends BaseDomain{
 public static final int DIGEST_TOPIC = 1;
 public static final int NOT_DIGEST_TOPIC=0;
 
-    @id
+    @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name="topic_id")
     private Integer topicId;

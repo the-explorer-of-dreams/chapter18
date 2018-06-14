@@ -9,7 +9,7 @@ import javax.persistence.*;
 @Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
 @Table(name="t_login_log")
 public class LoginLog extends BaseDomain{
-    @id
+    @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name="login_datetime")
     private Integer loginLogId;

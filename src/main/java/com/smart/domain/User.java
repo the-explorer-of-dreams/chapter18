@@ -29,7 +29,7 @@ public class User extends BaseDomain {
      */
     public static final int NORMAL_USER = 1;
 
-    @id
+    @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name="user_id")
     private Integer userId;

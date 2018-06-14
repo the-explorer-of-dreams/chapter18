@@ -17,7 +17,7 @@
           p:username="${jdbc.username}"
           p:password="${jdbc.password}"/>
 
-    <bean id="sessionFactory" class="org.springframework.orm.hibernate3.annotation.AnnotationSessionFactoryBean">
+    <bean id="sessionFactory" class="org.springframework.orm.hibernate4.LocalSessionFactoryBean">
         <property name="dataSource" ref="dataSource"/>
         <property name="hibernateProperties">
             <props>
@@ -35,9 +35,9 @@
         </property>
     </bean>
 
-    <bean id="hibernateTemplate" class="org.springframework.orm.hibernate5.HibernateTemplate"
+    <bean id="hibernateTemplate" class="org.springframework.orm.hibernate4.HibernateTemplate"
           p:sessionFactory-ref="sessionFactory"/>
-    <bean id="transactionManager" class="org.springframework.orm.hibernate5.HibernateTransactionManager"
+    <bean id="transactionManager" class="org.springframework.orm.hibernate4.HibernateTransactionManager"
           p:sessionFactory-ref="sessionFactory"/>
 
     <tx:advice id="txAdvice" transaction-manager="transactionManager">

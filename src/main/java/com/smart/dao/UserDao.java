@@ -19,7 +19,7 @@ public class UserDao extends BaseDao<User>{
      * @return user
      */
     public User getUserByUserName(String userName){
-        List<User> usersList = getHibernateTemplate().find(GET_USER_BY_NAME,userName);
+        List<User> usersList = (List<User>)getHibernateTemplate().find(GET_USER_BY_NAME,userName);
         if( usersList == null || ((List) usersList).size() == 0){
             return null;
         }else{
@@ -33,6 +33,7 @@ public class UserDao extends BaseDao<User>{
      * @return user
      */
     public List<User> queryUserByUserName(String userName){
-        List<User> usersList = getHibernateTemplate().find(QUERY_USER_BY_USERNAME,userName+"%");
+        List<User> usersList = (List<User>)getHibernateTemplate().find(QUERY_USER_BY_USERNAME,userName+"%");
+        return usersList;
     }
 }

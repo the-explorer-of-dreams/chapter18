@@ -10,7 +10,7 @@ import javax.persistence.*;
 @Table(name="t_board")
 public class Board extends BaseDomain {
 
-    @id
+    @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "board_id")
     private Integer boardId;

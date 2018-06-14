@@ -18,7 +18,7 @@ public class TopicDao extends BaseDao<Topic> {
      * @return 所有精华帖中指定页的数据
      */
     public Page getBoardDigestTopics(int boardId,int pageNo,int pageSize){
-        return pagedQuery(GET_BOARD_DIGEST_TOPICS,pageNo,pageSize,boardId)
+        return pagedQuery(GET_BOARD_DIGEST_TOPICS,pageNo,pageSize,boardId);
     }
 
     /**

@@ -1,5 +1,6 @@
 package com.smart.dao;
 
+import com.smart.domain.Post;
 import org.springframework.stereotype.Repository;
 
 /**
