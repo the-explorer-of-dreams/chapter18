@@ -39,10 +39,10 @@ public static final int NOT_DIGEST_TOPIC=0;
     private Date createTime = new Date();
 
     @Column(name="topic_views")
-    private Integer views;
+    private Integer topicViews;
 
     @Column(name="topic_replies")
-    private Integer replies;
+    private Integer topicReplies;
 
     private Integer digest = NOT_DIGEST_TOPIC;
 
@@ -102,20 +102,20 @@ public static final int NOT_DIGEST_TOPIC=0;
         this.createTime = createTime;
     }
 
-    public Integer getViews() {
-        return views;
+    public Integer getTopicViews() {
+        return topicViews;
     }
 
-    public void setViews(Integer views) {
-        this.views = views;
+    public void setTopicViews(Integer topicViews) {
+        this.topicViews = topicViews;
     }
 
-    public Integer getReplies() {
-        return replies;
+    public Integer getTopicReplies() {
+        return topicReplies;
     }
 
-    public void setReplies(Integer replies) {
-        this.replies = replies;
+    public void setTopicReplies(Integer topicReplies) {
+        this.topicReplies = topicReplies;
     }
 
     public Integer getDigest() {

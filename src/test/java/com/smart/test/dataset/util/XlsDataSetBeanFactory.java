@@ -1,8 +1,10 @@
 package com.smart.test.dataset.util;
 
 import org.apache.commons.beanutils.BeanUtilsBean;
+import org.apache.commons.beanutils.ConvertUtils;
 import org.apache.commons.beanutils.ConvertUtilsBean;
 import org.apache.commons.beanutils.converters.DateConverter;
+import org.apache.commons.beanutils.converters.IntegerConverter;
 import org.dbunit.dataset.Column;
 import org.dbunit.dataset.DataSetException;
 import org.dbunit.dataset.IDataSet;
@@ -21,10 +23,14 @@ import java.util.Map;
  * 从EXCEL数据集文件创建Bean
  */
 public class XlsDataSetBeanFactory {
-	
+
+	static{
+		ConvertUtils.register(new IntegerConverter(null), Integer.class);
+	}
 	//从DbUnit的EXCEL数据集文件创建多个bean
 	public static <T> List<T> createBeans(Class testClass,String file, String tableName,
 			Class<T> clazz) throws Exception {
+
 		BeanUtilsBean beanUtils = createBeanUtils();
 		List<Map<String, Object>> propsList = createProps(testClass,file, tableName);
 		List<T> beans = new ArrayList<T>();
