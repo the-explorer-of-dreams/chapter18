@@ -11,12 +11,12 @@ import javax.persistence.*;
 public class LoginLog extends BaseDomain{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name="login_datetime")
+    @Column(name="login_log_id")
     private Integer loginLogId;
 
     @ManyToOne
     @JoinColumn(name="user_id")
-    private Integer userId;
+    private User user;
 
     @Column(name = "ip")
     private String ip;
@@ -32,12 +32,12 @@ public class LoginLog extends BaseDomain{
         this.loginLogId = loginLogId;
     }
 
-    public Integer getUserId() {
-        return userId;
+    public User getUser() {
+        return user;
     }
 
-    public void setUserId(Integer userId) {
-        this.userId = userId;
+    public void setUser(User user) {
+        this.user = user;
     }
 
     public String getIp() {

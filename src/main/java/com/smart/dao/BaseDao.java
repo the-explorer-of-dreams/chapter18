@@ -3,6 +3,7 @@ package com.smart.dao;
 import org.hibernate.Query;
 import org.hibernate.Session;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.orm.hibernate4.HibernateTemplate;
 import org.springframework.util.Assert;
 
@@ -184,6 +185,7 @@ public class BaseDao<T> {
         return hibernateTemplate;
     }
 
+    @Autowired
     public void setHibernateTemplate(HibernateTemplate hibernateTemplate) {
         this.hibernateTemplate = hibernateTemplate;
     }

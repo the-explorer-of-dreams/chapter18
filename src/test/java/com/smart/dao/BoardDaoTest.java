@@ -11,7 +11,7 @@ import org.unitils.spring.annotation.SpringBean;
 import java.util.List;
 
 public class BoardDaoTest extends BaseDaoTest{
-    @SpringBean("BoardDao")
+    @SpringBean("boardDao")
     private BoardDao boardDao;
 
     @Test
@@ -39,5 +39,7 @@ public class BoardDaoTest extends BaseDaoTest{
         Assert.assertNotNull(board);
         Assert.assertEquals(board.getBoardName(),"SpringMVC");
     }
+
+
 
 }
