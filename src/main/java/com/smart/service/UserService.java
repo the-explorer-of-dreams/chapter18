@@ -29,7 +29,7 @@ public class UserService {
     /**
      * register a new user
      */
-    public void register(User user){
+    public void register(User user) throws UserExistException{
         User u = this.userDao.getUserByUserName(user.getUserName());
         if(u != null){
             throw new UserExistException("用户名已存在");
