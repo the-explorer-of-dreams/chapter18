@@ -73,14 +73,14 @@ public class ForumService {
      */
     public void addTopic(Topic topic){
         //the topic number of the board +1
-        Board board = this.boardDao.getBoardNum(topic.getBoardId());
+        Board board = this.boardDao.get(topic.getBoardId());
         board.setTopicNum(board.getTopicNum()+1);
 
         //add a mainpost
         MainPost mainPost = topic.getMainPost();
         mainPost.setCreateTime(new Date());
-        mainPost.setUser(topic.getUser());T
-                mainPost.setPostTitle(topic.getopicTitle());
+        mainPost.setUser(topic.getUser());
+        mainPost.setPostTitle(topic.getTopicTitle());
         mainPost.setBoardId(topic.getBoardId());
         this.postDao.save(mainPost);
 
