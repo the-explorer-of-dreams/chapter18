@@ -4,6 +4,7 @@ import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
 
 import javax.persistence.*;
+import java.util.Date;
 
 @Entity
 @Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
@@ -22,7 +23,7 @@ public class LoginLog extends BaseDomain{
     private String ip;
 
     @Column(name="login_datetime")
-    private String loginDateTime;
+    private Date loginDateTime;
 
     public Integer getLoginLogId() {
         return loginLogId;
@@ -48,11 +49,11 @@ public class LoginLog extends BaseDomain{
         this.ip = ip;
     }
 
-    public String getLoginDateTime() {
+    public Date getLoginDateTime() {
         return loginDateTime;
     }
 
-    public void setLoginDateTime(String loginDateTime) {
+    public void setLoginDateTime(Date loginDateTime) {
         this.loginDateTime = loginDateTime;
     }
 }

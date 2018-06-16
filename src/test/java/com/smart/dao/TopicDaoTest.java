@@ -17,7 +17,7 @@ public class TopicDaoTest extends BaseDaoTest {
     TopicDao topicDao;
 
     @Test
-//    @ExpectedDataSet("XiaoChun.ExpectedTopics.xls")
+    @ExpectedDataSet("XiaoChun.ExpectedTopics.xls")
     public void save() throws Exception{
         List<Topic> topicList = XlsDataSetBeanFactory.createBeans(TopicDaoTest.class,"XiaoChun.SaveTopics.xls","t_topic",Topic.class);
         for (Topic topic : topicList) {
@@ -27,16 +27,16 @@ public class TopicDaoTest extends BaseDaoTest {
             topicDao.save(topic);
 
         }
-        topicDao.getHibernateTemplate().flush();
-        System.out.println("===================");
-        Topic queryTopic = topicDao.get(1);
-        System.out.println("topic name:"+queryTopic.getTopicTitle());
+//        topicDao.getHibernateTemplate().
+//        System.out.println("===================");
+//        Topic queryTopic = topicDao.get(1);
+//        System.out.println("topic name:"+queryTopic.getTopicTitle());
     }
 
-    @Test
-    @DataSet("XiaoChun.SaveTopics.xls")
-    @ExpectedDataSet("XiaoChun.ExpectedTopics.xls")
-    public void dataSetSave(){
-
-    }
+//    @Test
+//    @DataSet("XiaoChun.SaveTopics.xls")
+//    @ExpectedDataSet("XiaoChun.ExpectedTopics.xls")
+//    public void dataSetSave(){
+//
+//    }
 }
