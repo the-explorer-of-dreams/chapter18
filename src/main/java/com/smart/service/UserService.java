@@ -16,17 +16,11 @@ public class UserService {
     private UserDao userDao;
     private LoginLogDao loginLogDao;
 
-    public UserDao getUserDao() {
-        return userDao;
-    }
     @Autowired
     public void setUserDao(UserDao userDao) {
         this.userDao = userDao;
     }
 
-    public LoginLogDao getLoginLogDao() {
-        return loginLogDao;
-    }
     @Autowired
     public void setLoginLogDao(LoginLogDao loginLogDao) {
         this.loginLogDao = loginLogDao;
