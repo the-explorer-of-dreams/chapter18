@@ -169,7 +169,7 @@ public class ForumService {
         user.setCredit(user.getCredit() + 5);
         this.userDao.update(user);
         //the post number of the topic +1 and refresh the last post time
-        Topic topic = this.topicDao.get(post.getTopic());
+        Topic topic = this.topicDao.get(post.getTopic().getTopicId());
         topic.setTopicReplies(topic.getTopicReplies() + 1);
         topic.setLastPost(new Date());
         this.topicDao.update(topic);
@@ -187,7 +187,7 @@ public class ForumService {
         user.setCredit(user.getCredit() - 20);
         this.userDao.update(user);
         //the replies of the topic -1
-        Topic topic  = this.topicDao.get(post.getTopic());
+        Topic topic  = this.topicDao.get(post.getTopic().getTopicId());
         topic.setTopicReplies(topic.getTopicReplies() - 1);
         this.topicDao.update(topic);
     }
@@ -232,6 +232,7 @@ public class ForumService {
            this.userDao.update(user);
         }
     }
+
 
 
 
