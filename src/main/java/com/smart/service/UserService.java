@@ -36,7 +36,7 @@ public class UserService {
         }else{
             user.setCredit(100);
             user.setUserType(1);
-            this.userDao.save(u);
+            this.userDao.save(user);
         }
     }
 

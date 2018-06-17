@@ -122,10 +122,17 @@
       <version>${slf4j.version}</version>
     </dependency>
 
+    <!--<dependency>-->
+      <!--<groupId>org.mockito</groupId>-->
+      <!--<artifactId>mockito-all</artifactId>-->
+      <!--<version>${mockito.version}</version>-->
+    <!--</dependency>-->
+    <!-- https://mvnrepository.com/artifact/org.mockito/mockito-core -->
     <dependency>
       <groupId>org.mockito</groupId>
-      <artifactId>mockito-all</artifactId>
+      <artifactId>mockito-core</artifactId>
       <version>${mockito.version}</version>
+      <scope>test</scope>
     </dependency>
     <dependency>
       <groupId>org.testng</groupId>
@@ -300,7 +307,7 @@
     <jetty.version>8.1.8.v20121106</jetty.version>
     <aspectjweaver.version>1.6.8</aspectjweaver.version>
     <hibernate.version>4.2.0.Final</hibernate.version>
-    <mockito.version>1.10.19</mockito.version>
+    <mockito.version>2.19.0</mockito.version>
     <unitils.version>3.4.6</unitils.version>
     <selenium.version>2.41.0</selenium.version>
     <dbunit.version>2.5.2</dbunit.version>

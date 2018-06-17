@@ -28,27 +28,6 @@ public class UserServiceTest extends BaseServiceTest{
         ReflectionTestUtils.setField(this.userService,"userDao",this.userDao);
     }
 
-//    @Test
-//    public void register() throws UserExistException{
-//        User user = new User();
-//        user.setUserName("testwww");
-//        user.setPassword("1234");
-//
-//        doAnswer(new Answer<User>() {
-//            public User answer(InvocationOnMock invocation) {
-//                Object[] args = invocation.getArguments();
-//                User user = (User) args[0];
-//                if (user != null) {
-//                    user.setUserId(1);
-//                }
-//                return user;
-//            }
-//        }).when(userDao).save(user);
-//
-//        userService.register(user);
-//        assertEquals((int)user.getUserId(), 1);
-//        verify(userDao, times(1)).save(user);
-//    }
 
     @Test
     public void register() throws UserExistException {
@@ -56,22 +35,70 @@ public class UserServiceTest extends BaseServiceTest{
         user.setUserName("william");
         user.setPassword("123456");
 
-//        doAnswer(new Answer<User>() {
-//            public User answer(InvocationOnMock invocationOnMock) throws Throwable {
-//               Object[] args = invocationOnMock.getArguments();
-//               User  userMock = (User)args[0];
-//               if(userMock !=  null){
-//                   userMock.setUserId(1);
-//               }
-//               User userTemp = new User();
-//               userTemp.setUserId(new Integer(100));
-//                return userTemp;
-//            }
-//        }).when(this.userDao).save(user);
-        doReturn(user).when(userDao).save(user);
+        doAnswer(new Answer() {
+            public Object answer(InvocationOnMock invocationOnMock) throws Throwable {
+               Object[] args = invocationOnMock.getArguments();
+               User  userMock = (User)args[0];
+               if(userMock !=  null){
+                   userMock.setUserId(1);
+               }
+               return null;
+            }
+        }).when(this.userDao).save(user);
         userService.register(user);
         assertEquals((int)user.getUserId(),1);
         Mockito.verify(this.userDao,Mockito.times(1)).save(user);
+    }
+
+    /**
+     * 测试根据用户名模糊查询用户列表
+     */
+    public void getUserByUserName(){
+        //prepare the test context
+        User user = new User();
+        user.setUserName("tom");
+        user.setPassword("123456");
+        user.setCredit(100);
+        doReturn(user).when(this.userDao).getUserByUserName("tom");
+
+        //lauch the test
+        User u = userService.getUserByUserName("tom");
+        //assert the result
+        assertNotNull(u);
+        assertEquals(((User) u).getUserName(),user.getUserName());
+        verify(userDao,times(1)).getUserByUserName("tom");
+    }
+
+    /**
+     * 测试锁定用户的服务方法
+     */
+    @Test
+    public void lockUser() {
+        User user = new User();
+        user.setUserName("tom");
+        user.setPassword("1234");
+        doReturn(user).when(userDao).getUserByUserName("tom");
+        doNothing().when(userDao).update(user);
+
+        userService.lockUser("tom");
+        User u = userService.getUserByUserName("tom");
+
+        assertEquals(User.USER_LOCK, u.getLocked());
+    }
+
+    @Test
+    public void unlockUser() {
+
+        User user = new User();
+        user.setUserName("tom");
+        user.setPassword("1234");
+        user.setLocked(User.USER_LOCK);
+        doReturn(user).when(userDao).getUserByUserName("tom");
+        doNothing().when(userDao).update(user);
+
+        userService.unlockUser("tom");
+        User u = userService.getUserByUserName("tom");
+        assertEquals(User.USER_UNLOCK, u.getLocked());
     }
 
 
