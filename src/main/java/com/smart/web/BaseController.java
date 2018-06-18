@@ -14,7 +14,7 @@ public class BaseController {
      * @param request
      */
     protected User getSessionUser(HttpServletRequest request){
-        return request.getSession().getAttribute(CommonConstant.USER_CONTEXT)
+        return (User)request.getSession().getAttribute(CommonConstant.USER_CONTEXT);
     }
 
     /**

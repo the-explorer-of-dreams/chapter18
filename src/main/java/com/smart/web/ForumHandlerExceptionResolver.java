@@ -12,7 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 public class ForumHandlerExceptionResolver extends SimpleMappingExceptionResolver {
     @Override
     protected ModelAndView doResolveException(HttpServletRequest request, HttpServletResponse response, Object handler, Exception ex) {
-        request.setAttribute("ex",e);
+        request.setAttribute("ex",ex);
         ex.printStackTrace();
         return super.doResolveException(request, response, handler, ex);
     }

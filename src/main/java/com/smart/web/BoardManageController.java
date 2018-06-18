@@ -3,6 +3,9 @@ package com.smart.web;
 import com.smart.cons.CommonConstant;
 import com.smart.dao.Page;
 import com.smart.domain.Board;
+import com.smart.domain.Post;
+import com.smart.domain.Topic;
+import com.smart.domain.User;
 import com.smart.service.ForumService;
 import org.apache.xpath.operations.Mod;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,6 +15,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
+
+import javax.servlet.http.HttpServletRequest;
+import java.util.Date;
 
 @Controller
 public class BoardManageController extends BaseController{
@@ -25,7 +31,7 @@ public class BoardManageController extends BaseController{
      * 列出版块下所有帖子
      */
     @RequestMapping(value = "/board/listBoardTopics-{boardId}", method = RequestMethod.GET)
-    public ModelAndView listBoardTopics(@PathVariable Integer boardId,@RequestParam(value="pageNo",required = "false") Integer pageNo){
+    public ModelAndView listBoardTopics(@PathVariable Integer boardId,@RequestParam(value="pageNo",required = false) Integer pageNo){
         ModelAndView mav = new ModelAndView();
         Board board = this.forumService.getBoardById(boardId);
         pageNo = (pageNo == null) ? 1:pageNo;
@@ -61,7 +67,7 @@ public class BoardManageController extends BaseController{
      * @return
      */
     @RequestMapping(value = "/board/addTopic", method = RequestMethod.POST)
-    public String addTopic(HttpServletRequest request,Topic topic) {
+    public String addTopic(HttpServletRequest request, Topic topic) {
         User user = getSessionUser(request);
         topic.setUser(user);
         Date now = new Date();
