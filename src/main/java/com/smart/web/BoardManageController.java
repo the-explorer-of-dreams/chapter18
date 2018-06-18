@@ -38,7 +38,7 @@ public class BoardManageController extends BaseController{
         Page pageTopic = this.forumService.getPagedTopic(boardId,pageNo,CommonConstant.PAGE_SIZE);
 
         mav.addObject("board",board);
-        mav.addObject("pageTopic",pageTopic);
+        mav.addObject("pagedTopic",pageTopic);
         mav.setViewName("/listBoardTopics");
 
         return mav;
@@ -73,6 +73,8 @@ public class BoardManageController extends BaseController{
         Date now = new Date();
         topic.setCreateTime(now);
         topic.setLastPost(now);
+        topic.setTopicViews(0);
+        topic.setTopicReplies(0);
         forumService.addTopic(topic);
         String targetUrl = "/board/listBoardTopics-" + topic.getBoardId()
                 + ".html";
@@ -111,7 +113,7 @@ public class BoardManageController extends BaseController{
         post.setCreateTime(new Date());
         post.setUser(getSessionUser(request));
         Topic topic = new Topic();
-        int topicId = Integer.valueOf(request.getParameter("topicId"));
+        int topicId = Integer.valueOf(request.getParameter("topic.topicId"));
         if (topicId >0) {
             topic.setTopicId(topicId);
             post.setTopic(topic);

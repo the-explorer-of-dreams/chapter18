@@ -4,7 +4,6 @@ import com.smart.dao.UserDao;
 
 import com.smart.domain.User;
 import com.smart.exception.UserExistException;
-import com.sun.javaws.JnlpxArgs;
 import org.mockito.Mockito;
 import org.mockito.invocation.InvocationOnMock;
 import org.mockito.stubbing.Answer;

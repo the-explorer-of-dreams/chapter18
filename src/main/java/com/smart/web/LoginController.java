@@ -59,6 +59,7 @@ public class LoginController extends BaseController{
      * logout the user
      * @param session
      */
+    @RequestMapping("/doLogout")
     public String logout(HttpSession session){
         session.removeAttribute(CommonConstant.USER_CONTEXT);
         return "forward:/index.jsp";

@@ -7,6 +7,7 @@
   <artifactId>chapter18</artifactId>
   <version>1.0</version>
   <name>Spring4.x第十八章实例</name>
+  <packaging>war</packaging>
 
   <dependencies>
     <dependency>
@@ -257,7 +258,17 @@
       <artifactId>hamcrest-all</artifactId>
       <version>${hamcrest.version}</version>
     </dependency>
-
+    <!--jstl表达式-->
+    <dependency>
+      <groupId>jstl</groupId>
+      <artifactId>jstl</artifactId>
+      <version>1.2</version>
+    </dependency>
+    <dependency>
+      <groupId>taglibs</groupId>
+      <artifactId>standard</artifactId>
+      <version>1.2</version>
+    </dependency>
 
   </dependencies>
 
