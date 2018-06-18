@@ -87,7 +87,7 @@ public class BaseDao<T> {
      */
     public Page pagedQuery(String sql,int pageNo,int pageSize,Object... params){
         //get the total number
-        String countQuerySql = "select count(1) "+removeSelect(sql);
+        String countQuerySql = "select count(*) "+removeSelect(sql);
         List countList = getHibernateTemplate().find(countQuerySql,params);
         long totalCount = (Long)countList.get(0);
         //get the start index
